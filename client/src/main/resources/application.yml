@@ -1,0 +1,49 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.123:10000/eureka/,http://192.168.1.123:10001/eureka/
+    healthcheck:
+      enabled: true
+
+server:
+  port: 10020
+  servlet:
+    context-path: /
+
+spring:
+#  profiles:
+#    active: local
+  application:
+    name: im-route-server
+
+  main:
+    #允许使用相同的服务名
+    allow-bean-definition-overriding: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+  #zipkin配置
+  zipkin:
+    base-url: http://192.168.1.123:10010
+    enabled: true
+
+    sleuth:
+      sampler:
+        probability: 1.0
+
+      web:
+        client:
+          enabled: true
+
+#服务提供者的服务名字
+service:
+  name: service
+
+ribbon:
+  httpclient:
+    # 关闭 httpclient 支持
+    enabled: false
+  okhttp:
+    # 开启 okhttp 支持
+    enabled: true

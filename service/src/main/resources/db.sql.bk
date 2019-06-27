@@ -1,0 +1,14 @@
+create database tangdabao;
+use tangdabao;
+
+create table xiaobao(
+  id serial primary key,
+  askName varchar(30) not null,
+  reply varchar(255) not null,
+  createdDate datetime not null default current_timestamp
+);
+
+
+insert into xiaobao(askName, reply)
+  values("唐宝在哪?","深圳"),("他的职业是什么?","全能选手^_^!"),
+    ("怎么联系他?","www.tangdabao.com"),("唐宝是魔鬼吗?","小心被寄刀片～～～");

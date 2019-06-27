@@ -1,0 +1,42 @@
+#注册中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.123:10000/eureka/,http://192.168.1.123:10001/eureka/
+    healthcheck:
+      enabled: true
+
+server:
+  port: 9000
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: zuul
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+zuul:
+  routes:
+    #将xiaobao模块路由到路径/ask/开头的的url,并且对应的服务id是client
+    xiaobao:
+      path: /ask/**
+      serviceId: client
+    #将tangdabao模块路由到路径/joker/开头的的url,并且对应的服务id是client
+    tangdabao:
+      path: /joker/**
+      serviceId: client
+
+#oauth鉴权配置
+oauth:
+  enabled: true
+  check_token_url: http://192.168.1.123:9010/oauth/check_token
+  authenticated_list:
+    - /ask/**
+    - /joker/**
+
+logging:
+  level.root: info
