@@ -1,7 +1,7 @@
 package com.tangdabao.springcloud.oauth.service;
 
-import com.ihuizhi.chess.cloud.oauth.dao.OAuthClientDetailDao;
-import com.ihuizhi.chess.cloud.oauth.entity.OAuthClientDetail;
+import com.tangdabao.springcloud.oauth.dao.OAuthClientDetailDao;
+import com.tangdabao.springcloud.oauth.entity.OAuthClientDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

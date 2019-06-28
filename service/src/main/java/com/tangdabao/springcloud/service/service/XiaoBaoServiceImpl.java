@@ -34,7 +34,7 @@ public class XiaoBaoServiceImpl implements XiaoBaoService {
         Map<String,Object> result=new HashMap<>();
         result.put("redis运行位置",tangbaoRedis.read());
 
-        List<Map> list=xiaobaoDao.ask();
+        List<Map> list=xiaobaoDao.askMe();
 
         if(list==null)
             return result;

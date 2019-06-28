@@ -2,12 +2,12 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.1.123:10000/eureka/,http://192.168.1.123:10001/eureka/
+      defaultZone: http://127.0.0.1:8000/eureka/,http://127.0.0.1:8001/eureka/
     healthcheck:
       enabled: true
 
 server:
-  port: 10030
+  port: 9030
   servlet:
     context-path: /
 
@@ -21,7 +21,7 @@ spring:
 
   #zipkin配置
   zipkin:
-    base-url: http://192.168.1.123:10010
+    base-url: http://127.0.0.1:8010
     enabled: true
 
     sleuth:
@@ -101,7 +101,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     #开启SQL日志信息
-    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 mapper:
   mappers: com.tangdabao.springcloud.service.dao
   identity: MYSQL

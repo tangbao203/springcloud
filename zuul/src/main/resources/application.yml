@@ -2,7 +2,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.1.123:10000/eureka/,http://192.168.1.123:10001/eureka/
+      defaultZone: http://127.0.0.1:8000/eureka/,http://127.0.0.1:8001/eureka/
     healthcheck:
       enabled: true
 
@@ -23,20 +23,20 @@ zuul:
   routes:
     #将xiaobao模块路由到路径/ask/开头的的url,并且对应的服务id是client
     xiaobao:
-      path: /ask/**
-      serviceId: client
+      path: /xiaobao/**
+      serviceId: client-8020
     #将tangdabao模块路由到路径/joker/开头的的url,并且对应的服务id是client
-    tangdabao:
-      path: /joker/**
-      serviceId: client
+    dabao:
+      path: /dabao/**
+      serviceId: client-8030
 
 #oauth鉴权配置
 oauth:
   enabled: true
-  check_token_url: http://192.168.1.123:9010/oauth/check_token
+  check_token_url: http://127.0.0.1:9010/oauth/check_token
   authenticated_list:
-    - /ask/**
-    - /joker/**
+    - /xiaobao/**
+    - /xixi/**
 
 logging:
   level.root: info

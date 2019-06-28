@@ -15,6 +15,7 @@ public class JokerController {
 
     @RequestMapping("/tangbaoIsMonster")
     public Object tangbaoIsMonster(){
+        System.out.println("========= -_-! ==========");
         Map<String,Object> result=xiaoBaoService.tangbaoIsMonster();
         //bu la bu la.......
         return result;

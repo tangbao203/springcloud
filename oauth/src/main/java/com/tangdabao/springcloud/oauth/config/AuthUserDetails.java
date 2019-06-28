@@ -1,15 +1,15 @@
 package com.tangdabao.springcloud.oauth.config;
 
-import com.ihuizhi.chess.cloud.oauth.entity.OAuthClientDetail;
+import com.tangdabao.springcloud.oauth.entity.OAuthClientDetail;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class ChessUserDetails extends OAuthClientDetail implements UserDetails {
+public class AuthUserDetails extends OAuthClientDetail implements org.springframework.security.core.userdetails.UserDetails {
 
-	public ChessUserDetails(OAuthClientDetail oauth) {
+	public AuthUserDetails(OAuthClientDetail oauth) {
 		super(oauth);
 	}
 

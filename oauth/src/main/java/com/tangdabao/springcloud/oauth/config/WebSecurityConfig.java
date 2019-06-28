@@ -1,14 +1,18 @@
 package com.tangdabao.springcloud.oauth.config;
 
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Spring security 配置
@@ -25,7 +29,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final String ACCESS_ROLE_NAME="USER";
 
 	@Autowired
-	private ChessAuthenticationProvider authProvider;
+	private AuthProvider authProvider;
+
+	@Autowired
+	private SysUserDetailslService sysUserDetailslService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -41,22 +48,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	//比较简单的内存方式 设置用户的权限
-	/*@Override
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-				.passwordEncoder(new AuthPasswordEncoder())
-				.withUser(username).password(password)
-				.roles(ACCESS_ROLE_NAME);
-	}*/
+		auth.inMemoryAuthentication().withUser(username).password(password).roles(ACCESS_ROLE_NAME);
+	}
 
-	/**
-	 * 取消spring 内置用户密码
-	 * @return
-	 * @throws Exception
-	 */
+
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager();
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new AuthPasswordEncoder();
 	}
 }

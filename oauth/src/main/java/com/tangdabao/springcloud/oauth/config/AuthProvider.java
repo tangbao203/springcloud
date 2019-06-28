@@ -1,6 +1,6 @@
 package com.tangdabao.springcloud.oauth.config;
 
-import com.ihuizhi.chess.cloud.oauth.service.SysUserService;
+import com.tangdabao.springcloud.oauth.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ChessAuthenticationProvider implements AuthenticationProvider {
+public class AuthProvider implements AuthenticationProvider {
 	@Autowired
 	private SysUserDetailslService userService;
 

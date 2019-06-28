@@ -15,6 +15,8 @@ public class AskController {
 
     @RequestMapping("whoIsTangbao")
     public Object whoIsTangbao(){
+        System.out.println("=========我在这里==========");
+
         Map<String,Object> result=xiaoBaoService.whoIsTangbao();
 
         return result;

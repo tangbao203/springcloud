@@ -6,7 +6,7 @@ eureka:
       enabled: true
 
 server:
-  port: 8010
+  port: 8020
   servlet:
     context-path: /
 
@@ -14,7 +14,7 @@ spring:
 #  profiles:
 #    active: local
   application:
-    name: zipkin
+    name: client-8020
 
   main:
     #允许使用相同的服务名
@@ -22,9 +22,28 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Shanghai
-#解决zipkin报错
-management:
-  metrics:
-    web:
-      server:
-        auto-time-requests: false
+
+  #zipkin配置
+  zipkin:
+    base-url: http://127.0.0.1:8010
+    enabled: true
+
+    sleuth:
+      sampler:
+        probability: 1.0
+
+      web:
+        client:
+          enabled: true
+
+#服务提供者的服务名字
+service:
+  name: service
+
+ribbon:
+  httpclient:
+    # 关闭 httpclient 支持
+    enabled: false
+  okhttp:
+    # 开启 okhttp 支持
+    enabled: true

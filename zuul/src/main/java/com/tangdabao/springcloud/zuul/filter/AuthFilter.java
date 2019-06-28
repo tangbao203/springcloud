@@ -59,9 +59,7 @@ public class AuthFilter extends ZuulFilter {
 
         String accessToken=request.getParameter("access_token");
         String clientId=request.getParameter("client_id");
-        if(accessToken==null || clientId==null){
-            responseError(ctx, ResultEnum.ERROR_PARAM,"参数不完整");
-        }
+
 
         //检测需要授权的url资源
         AntPathMatcher matcher=new AntPathMatcher();
@@ -70,6 +68,10 @@ public class AuthFilter extends ZuulFilter {
             for(String uri:oauthConfig.getAuthenticated_list()){
                 if(!matcher.match(uri, request.getRequestURI().toString()))
                     continue;
+
+                if(accessToken==null || clientId==null){
+                    responseError(ctx, ResultEnum.ERROR_PARAM,"参数不完整");
+                }
 
                 //从auth服务器里面获取token信息
                 String jsonResult=HttpUtil.sendPost(oauthConfig.getCheck_token_url(), "token="+accessToken);

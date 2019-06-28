@@ -1,9 +1,8 @@
 package com.tangdabao.springcloud.oauth.config;
 
-import com.ihuizhi.chess.cloud.oauth.entity.OAuthClientDetail;
-import com.ihuizhi.chess.cloud.oauth.service.SysUserService;
+import com.tangdabao.springcloud.oauth.entity.OAuthClientDetail;
+import com.tangdabao.springcloud.oauth.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,13 +13,13 @@ public class SysUserDetailslService implements UserDetailsService {
 	private SysUserService sysUserService;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//获取用户的详细信息
 		OAuthClientDetail user=sysUserService.queryUserByName(username);
 		if(user==null)
 			throw new UsernameNotFoundException("user not found");
 		
-		return new ChessUserDetails(user);
+		return new AuthUserDetails(user);
 	}
 
 

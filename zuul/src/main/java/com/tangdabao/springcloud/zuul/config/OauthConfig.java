@@ -9,7 +9,7 @@ import java.util.List;
  * oauth配置
  */
 @Component
-@ConfigurationProperties(prefix = "chess-oauth")
+@ConfigurationProperties(prefix = "oauth")
 public class OauthConfig {
     /**
      * 启用oauth服务

@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface XiaobaoDao {
-    public List<Map> ask();
+    List<Map> askMe();
 }

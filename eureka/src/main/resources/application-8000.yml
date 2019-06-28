@@ -1,16 +1,16 @@
 spring:
   application:
-    name: eureka-10001
+    name: eureka-8000
 
 server:
   #address: 0.0.0.0
-  port: 10001
+  port: 8000
 
 eureka:
   instance:
-    hostname: eureka-10000
+    #hostname: eureka-10001
     prefer-ip-address: true
-    ip-address: 192.168.1.123
+    ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
   client:
     #这台机器的注册信息是否允许被其它机器发现
@@ -18,7 +18,7 @@ eureka:
     #向注册中心拿取注册信息
     #fetchRegistry: false
     serviceUrl:
-      defaultZone: http://192.168.1.123:10000/eureka/
+      defaultZone: http://127.0.0.1:8001/eureka/
   #server:
     #是否开启eureka自我保护机制，网络中断eureka信息也不丢失
     #enable-self-preservation:

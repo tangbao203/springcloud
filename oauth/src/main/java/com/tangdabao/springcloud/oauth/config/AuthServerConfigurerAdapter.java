@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableAuthorizationServer
-public class ChessAuthorizationServerConfigurerAdapter extends AuthorizationServerConfigurerAdapter {
+public class AuthServerConfigurerAdapter extends AuthorizationServerConfigurerAdapter {
 	@Autowired
     private AuthenticationManager authenticationManager;
 
